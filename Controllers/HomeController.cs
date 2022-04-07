@@ -1,4 +1,6 @@
 ﻿using Microsoft.AspNetCore.Mvc;
+using DevExtreme.AspNet.Data;
+using DevExtreme.AspNet.Data.ResponseModel;
 
 namespace EditCellTemplateRemoteOperations.Controllers;
 
@@ -12,5 +14,8 @@ public class HomeController : Controller
     public IActionResult Index() => View();
 
     [HttpGet, ActionName("data")]
-    public List<ProductDto> Data() => _data.GetData();
+    public LoadResult Data(DataSourceLoadOptionsBase options)
+    {
+        return DataSourceLoader.Load(_data.GetData(), options);
+    }
 }

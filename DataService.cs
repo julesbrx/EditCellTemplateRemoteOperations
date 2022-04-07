@@ -7,7 +7,7 @@ public class DataService
     public DataService()
     {
         _products = (
-            from i in Enumerable.Range(0, 1000)
+            from i in Enumerable.Range(0, 10000)
             select new ProductDto
             {
                 Id = i,
@@ -16,7 +16,7 @@ public class DataService
         ).ToList();
     }
 
-    public List<ProductDto> GetData() => _products;
+    public IEnumerable<ProductDto> GetData() => _products;
 }
 
 public class ProductDto
